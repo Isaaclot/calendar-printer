@@ -4,7 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class WeekCalendar {
+
+public class WeekCalendarTask1 {
     /**
      * 输入指定日期，以字符串形式返回输出日期【所属周】的日历
      *
@@ -45,7 +46,7 @@ public class WeekCalendar {
             // 将calendar跳转到上周的最后一天，后续遍历七次 add 1
             int firstDateOfWeekIndex = cal.getFirstDayOfWeek() - currentDatIndex;
             cal.add(Calendar.DATE, firstDateOfWeekIndex - 1);
-
+            // 遍历七次 找到每个日期
             for (int i = 0; i < weekDates.length; i++) {
                 cal.add(Calendar.DATE, 1);
                 weekDates[i] = new SimpleDateFormat("d").format(cal.getTime());
