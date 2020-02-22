@@ -6,30 +6,31 @@ import java.util.Calendar;
 
 
 public class WeekCalendarTask1 {
-    /**
-     * 输入指定日期，以字符串形式返回输出日期【所属周】的日历
-     *
-     * @param inputDate 输入日期
-     * @return {@link String} 返回的周字符串
-     * @since 2020/2/21 9:10 PM
-     */
-    public String print(String inputDate) {
-        String[] weekDateArr = parseToWeekDates(inputDate);
-        return formatOutPut(weekDateArr);
+
+    public String date;
+
+    private String[] header = new String[]{"日", "一", "二", "三", "四", "五", "六"};
+
+    private String[] printWeekDates;
+
+    public WeekCalendarTask1(String date) {
+        this.date = date;
+        this.printWeekDates = parseToWeekDates(date);
     }
 
-    public String formatOutPut(String[] weekDateArr) {
+
+    public String formatTextOutPut() {
         StringBuffer sb = new StringBuffer();
-        sb.append("日\t");
-        sb.append("一\t");
-        sb.append("二\t");
-        sb.append("三\t");
-        sb.append("四\t");
-        sb.append("五\t");
-        sb.append("六\n");
-        for (int i = 0; i < weekDateArr.length; i++) {
-            sb.append(weekDateArr[i]);
-            if (i != weekDateArr.length - 1) {
+        for (int i = 0; i < header.length; i++) {
+            sb.append(header[i]);
+            if (i != printWeekDates.length - 1) {
+                sb.append("\t");
+            }
+        }
+        sb.append("\n");
+        for (int i = 0; i < printWeekDates.length; i++) {
+            sb.append(printWeekDates[i]);
+            if (i != printWeekDates.length - 1) {
                 sb.append("\t");
             }
         }
