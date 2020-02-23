@@ -5,40 +5,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class WeekCalendarTask2 {
+public abstract class WeekCalendarTask2 {
+
+    public static final int Print_Week_Date_Length = 7;
 
     public String date;
 
-    private String[] chineseWeekDate = new String[]{"日", "一", "二", "三", "四", "五", "六"};
+    public String[] printWeekDates;
 
-    private String[] printWeekDates;
+    public String[] chineseWeekDate = new String[]{"日", "一", "二", "三", "四", "五", "六"};
 
     public WeekCalendarTask2(String date) {
         this.date = date;
         this.printWeekDates = parseToWeekDates(date);
     }
 
-
-    public String formatTextOutPut() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < chineseWeekDate.length; i++) {
-            sb.append(chineseWeekDate[i]);
-            if (i != printWeekDates.length - 1) {
-                sb.append("\t");
-            }
-        }
-        sb.append("\n");
-        for (int i = 0; i < printWeekDates.length; i++) {
-            sb.append(printWeekDates[i]);
-            if (i != printWeekDates.length - 1) {
-                sb.append("\t");
-            }
-        }
-        return sb.toString();
-    }
+    public abstract String print();
 
     public String[] parseToWeekDates(String inputDate) {
-        String[] weekDates = new String[7];
+        String[] weekDates = new String[Print_Week_Date_Length];
         Calendar cal = Calendar.getInstance();
         try {
             cal.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(inputDate));
@@ -58,27 +43,4 @@ public class WeekCalendarTask2 {
         return weekDates;
     }
 
-    public String formatHtmlOutPut() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("<table>");
-        formatTableHeader(sb);
-        formatTableBody(this.printWeekDates, sb);
-        sb.append("</table>");
-        return sb.toString();
-    }
-
-    private void formatTableBody(String[] printWeekDates, StringBuffer htmlResult) {
-        htmlResult.append("<tbody><tr>");
-        for (int i = 0; i < printWeekDates.length; i++) {
-            htmlResult.append("<td>").append(printWeekDates[i]).append("</td>");
-        }
-        htmlResult.append("</tr></tbody>");
-
-    }
-
-    private void formatTableHeader(StringBuffer htmlResult) {
-        htmlResult.append("<thead>");
-        htmlResult.append("<tr><td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td></tr>");
-        htmlResult.append("</thead>");
-    }
 }
