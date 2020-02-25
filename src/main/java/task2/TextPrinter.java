@@ -1,6 +1,6 @@
 package task2;
 
-public class TextPrinter extends WeekCalendarTask2{
+public class TextPrinter extends WeekCalendar {
 
     public TextPrinter(String date) {
         super(date);

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public abstract class WeekCalendarTask2 {
+public abstract class WeekCalendar {
 
     public static final int Print_Week_Date_Length = 7;
 
@@ -15,7 +15,7 @@ public abstract class WeekCalendarTask2 {
 
     public String[] chineseWeekDate = new String[]{"日", "一", "二", "三", "四", "五", "六"};
 
-    public WeekCalendarTask2(String date) {
+    public WeekCalendar(String date) {
         this.date = date;
         this.printWeekDates = parseToWeekDates(date);
     }
